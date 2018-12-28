@@ -1,3 +1,6 @@
+
+print("This Cheat was coded by Steam: Z01Natsu\nThank you for using it!")
+
 import os 
 try:
 	from win32gui import PumpMessages
