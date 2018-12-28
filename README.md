@@ -1,6 +1,10 @@
 # Arma 3 Lagswitch
 A Laggswitch for Arma 3 made with python
 
+Why you should use my Lagswitch?
+
+	It just blocks the traffic for Arma3 so you can talk to your friend in Teamspeak or discord while using it
+
 How to use?
 
 1.dowload python
