@@ -1,5 +1,5 @@
 import os 
-print("Made by github.com/Z01Ntasu")
+
 try:
 	from win32gui import PumpMessages
 except:
@@ -10,9 +10,11 @@ try:
 except:
 	print ("Installing pyHook\n")
 	os.system('python -m pip install pyHook.whl')
+os.system("title Arma3 Lagswitch | Made by github.com/Z01Ntasu")
+os.system("cls")
 
-if input("First use?\n1. yes\n2.No\n") == "1":
-	os.system('netsh advfirewall firewall add rule name="ArmaLagg" dir=out action=block program="'+input("Your Arma path:\n")+'" enable=yes')
+print("Made by github.com/Z01Ntasu")
+print("Press 5 on the Keyboard to generate the required rule(just needed on first start)")
 print("Press 4 on the Keyboard to activate and deactivate the Laggswitch")
 
 class Keystroke_Watcher(object):
@@ -26,6 +28,8 @@ class Keystroke_Watcher(object):
 		try:
 			if event.KeyID  == 52:
 				self.switchRule()
+			elif event.KeyID  == 53:
+				self.generateRule()
 		finally:
 			return True
 
@@ -33,11 +37,16 @@ class Keystroke_Watcher(object):
 		if (self.alreadyOn == False):
 			self.alreadyOn = True
 			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=yes')
+			os.system('netsh advfirewall firewall set rule name="ArmaLagg" new enable=no')
 			print("not active")
 		else:
 			self.alreadyOn = False
 			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=no')
+			os.system('netsh advfirewall firewall set rule name="ArmaLagg" new enable=yes')
 			print("active")
+	
+	def generateRule(self):
+		os.system('netsh advfirewall firewall add rule name="ArmaLagg" dir=out action=block program="'+input("Your Arma path:\n")+'" enable=no')
 			
 watcher = Keystroke_Watcher()
 PumpMessages()
