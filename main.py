@@ -1,6 +1,3 @@
-
-print("This Cheat was coded by Steam: Z01Natsu\nThank you for using it!")
-
 import os 
 try:
 	from win32gui import PumpMessages
@@ -11,8 +8,10 @@ try:
 	from pyHook import HookManager
 except:
 	print ("Installing pyHook\n")
-	os.system('python -m pip install pyHook-1.5.1-cp37-cp37m-win_amd64.whl')
+	os.system('python -m pip install pyHook.whl')
 
+if input("First use?\n1. yes\n2.No\n") == "1":
+	os.system('netsh advfirewall firewall add rule name="ArmaLagg" dir=out action=block program="'+input("Your Arma path:\n")+'" enable=yes')
 print("Press 4 on the Keyboard to activate and deactivate the Laggswitch")
 
 class Keystroke_Watcher(object):
@@ -20,7 +19,7 @@ class Keystroke_Watcher(object):
 		self.hm = HookManager()
 		self.hm.KeyDown = self.on_keyboard_event
 		self.hm.HookKeyboard()
-		self.alreadyOn = False
+		self.alreadyOn = True
 
 	def on_keyboard_event(self, event):
 		try:
@@ -32,13 +31,12 @@ class Keystroke_Watcher(object):
 	def switchRule(self):
 		if (self.alreadyOn == False):
 			self.alreadyOn = True
-			string = 'netsh advfirewall firewall set rule name="Arma 3" new enable=' + "yes"
-			os.system(str(string))
+			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=yes')
 			print("not active")
 		else:
 			self.alreadyOn = False
-			string = 'netsh advfirewall firewall set rule name="Arma 3" new enable=' + "no"
-			os.system(str(string))
+			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=no')
 			print("active")
+			
 watcher = Keystroke_Watcher()
 PumpMessages()
