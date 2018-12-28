@@ -1,4 +1,5 @@
 import os 
+print("Made by github.com/Z01Ntasu")
 try:
 	from win32gui import PumpMessages
 except:
