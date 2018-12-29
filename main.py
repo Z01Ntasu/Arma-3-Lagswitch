@@ -36,13 +36,13 @@ class Keystroke_Watcher(object):
 	def switchRule(self):
 		if (self.alreadyOn == False):
 			self.alreadyOn = True
-			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=yes')
 			os.system('netsh advfirewall firewall set rule name="ArmaLagg" new enable=no')
+			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=yes')
 			print("not active")
 		else:
 			self.alreadyOn = False
-			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=no')
 			os.system('netsh advfirewall firewall set rule name="ArmaLagg" new enable=yes')
+			os.system('netsh advfirewall firewall set rule name="Arma 3" new enable=no')
 			print("active")
 	
 	def generateRule(self):
